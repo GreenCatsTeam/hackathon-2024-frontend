@@ -6,7 +6,8 @@
             "lastName": "Doe",
             "email": "john.doe@example.com",
             "city": "New York",
-            "status": 1
+            "status": 1,
+            "isbanned":true
           },
           {
             "userid": 2,
@@ -14,7 +15,8 @@
             "lastName": "Smith",
             "email": "jane.smith@example.com",
             "city": "Los Angeles",
-            "status": 0
+            "status": 0,
+            "isbanned":false
           }
       ]
   }

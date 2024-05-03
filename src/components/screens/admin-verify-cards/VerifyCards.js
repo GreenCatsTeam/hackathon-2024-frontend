@@ -1,8 +1,10 @@
+import MapView from "./map/Map";
+
 const VarifyCards = () => {
     return (
-        <div>
-            Cards eee
-        </div>
+        
+            <MapView/>
+        
     )
 };
   

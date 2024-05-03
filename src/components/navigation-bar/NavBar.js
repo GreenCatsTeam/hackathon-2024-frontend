@@ -15,17 +15,9 @@ const NavBar = () => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
           <Nav.Link href="/verify-page">Заявки на уборку</Nav.Link>
-          <Nav.Link href="/manage-users">Управление пользователями</Nav.Link>
           <Nav.Link href="/dashboard">Статистика</Nav.Link>
           
         </Nav>
-        <Nav className="d-flex">
-        <Nav.Link href="/login">Войти</Nav.Link>
-        <Nav.Link>|</Nav.Link>
-        
-        <Nav.Link href="/registration">Регистрация</Nav.Link>
-        </Nav>
-        
         
       </Navbar.Collapse>
     </Container>
@@ -35,3 +27,14 @@ const NavBar = () => {
 
 
 export default  NavBar
+
+/*<Nav.Link href="/manage-users">Управление пользователями</Nav.Link>
+
+</Nav>
+        <Nav className="d-flex">
+        <Nav.Link href="/login">Войти</Nav.Link>
+        <Nav.Link>|</Nav.Link>
+        
+        <Nav.Link href="/registration">Регистрация</Nav.Link>
+        
+        */
