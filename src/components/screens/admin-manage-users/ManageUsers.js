@@ -5,6 +5,7 @@ import UserManagement from './manage-user/UserManagement';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import { useAuth } from '../../../providers/AuthProvider';
 
 const UserManage = () => {
     const [cardData, setCardData] = useState([]);
@@ -12,14 +13,22 @@ const UserManage = () => {
     const [showCardData, setShowCards] = useState([])
     
     
-
+    
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch('http://10.124.62.60:3000/users');
+            const response = await fetch('http://localhost:8080/admin/users', {
+              method: "GET",
+              headers: {
+               
+                "Host": "localhost:8080",
+                'Authorization': 'Bearer ' +localStorage.getItem('site'),
+                "Content-Length": localStorage.getItem('site').length
+            }
+            });
             const jsonData = await response.json();
             setCardData(jsonData);
-            setShowCards(jsonData.filter((card)=>card.isbanned===false));
+            setShowCards(jsonData.filter((card)=>card.isBanned===false));
 
           } catch (error) {
             console.error('Error fetching data:', error);
@@ -36,7 +45,7 @@ const UserManage = () => {
       if (showBanned)
         setShowCards(cardData);
       else 
-        setShowCards(cardData.filter((card)=>card.isbanned===false))};
+        setShowCards(cardData.filter((card)=>card.isBanned===false))};
         
         UpdateCards();
 
@@ -64,13 +73,13 @@ const UserManage = () => {
       {showCardData.map(user => (
         <ListGroup.Item>
         <UserManagement
-          userid={user.userid}
+          userid={user.userId}
           firstName={user.firstName}
           lastName={user.lastName}
           email={user.email}
           city={user.city}
-          status={user.status}
-          isbanned={user.isbanned}
+          status={user.role}
+          isbanned={user.isBanned}
         />
         </ListGroup.Item>
       ))}
