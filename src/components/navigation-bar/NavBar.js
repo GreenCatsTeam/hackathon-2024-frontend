@@ -18,6 +18,8 @@ const NavBar = () => {
           
           <Nav.Link href="/verify-page">Заявки на уборку</Nav.Link>
           
+          <Nav.Link href="/add-card">Добавить заявку</Nav.Link>
+          
           <Nav.Link href="/manage-users">Управление пользователями</Nav.Link>
           <Nav.Link href="/dashboard">Статистика</Nav.Link>
           

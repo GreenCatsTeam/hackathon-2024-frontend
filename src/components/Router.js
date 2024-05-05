@@ -7,6 +7,7 @@ import RegPage from './screens/reg-page/RegPage'
 import VerifyCards from './screens/admin-verify-cards/VerifyCards'
 import UserManage from './screens/admin-manage-users/ManageUsers'
 import PrivateRoute from './PrivateRoute'
+import AddCard from './screens/admin-add-card/AddCard'
 
 const Router = () => {
   return (
@@ -20,6 +21,7 @@ const Router = () => {
             <Route path="/verify-page" element={<VerifyCards/>} />
               <Route path="/dashboard" element={<Dashboard/>} />
               <Route path="/manage-users" element={<UserManage/>} />
+              <Route path="/add-card" element={<AddCard/>} />
             </Route>
             
         </Routes>
