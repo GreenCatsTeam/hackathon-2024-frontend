@@ -4,7 +4,8 @@ import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
 import { useAuth } from '../../../providers/AuthProvider';
 import  axios  from 'axios';
-
+import { useNavigate } from 'react-router-dom';
+ 
 
 const RegPage = () => {
   const [firstName, setFirstName] = useState('');
@@ -20,7 +21,7 @@ const RegPage = () => {
 
   //const [rememberMe, setRememberMe] = useState(false);
   const auth = useAuth();
-
+  const navigate = useNavigate();
   const regAction = async (data) => {
     try {
       const response = await axios.post("http://localhost:8080/auth/registration", data, {
@@ -34,6 +35,7 @@ const RegPage = () => {
         
         
         auth.loginActionJWT({email:email, jwtToken:res.data.jwtToken})
+        navigate('/verify-page')
         return;
       });
     } catch (err) {

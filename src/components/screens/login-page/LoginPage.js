@@ -24,9 +24,9 @@ const LoginPage = () => {
 
     const login = async () =>{
     if (input.email !== "" && input.password !== "") {
-      auth.loginAction(input);
+      auth.loginAction(input).then(() => navigate('/verify-page'));
       
-      //navigate('/verify-page')
+      
       
     }}
 
