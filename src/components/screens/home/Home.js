@@ -5,7 +5,7 @@ import { FaTelegram } from "react-icons/fa";
 import { CiMail } from "react-icons/ci";
 import Badge from 'react-bootstrap/Badge';
 import ListGroup from 'react-bootstrap/ListGroup';
-
+import MapPublic from './MapPublic/MapPublic';
 const Home = () =>{
 return (
       
@@ -16,14 +16,16 @@ return (
         
         <Row><a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'><DiAndroid/> Скачать приложение <Badge bg="secondary">Новое</Badge></a></Row>
         
-        
-        
-
-        <h2 style={{ width: '25rem' }}>Контакты</h2>
+        <br/><br/>
+        <h2>Где происходит уборка около вас</h2>
+        <MapPublic/>
+        <br/><br/><br/><br/>
+        <h2 style={{ width: '25rem' }}>Наши контакты</h2>
         <ListGroup>
             <ListGroup.Item ><CiMail/> greencats@mail.ru</ListGroup.Item>
             <ListGroup.Item><FaTelegram/> @GreenCats</ListGroup.Item>
         </ListGroup>
+        <br/><br/><br/><br/>
       </Row>
      
      

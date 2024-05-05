@@ -6,30 +6,36 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { useAuth } from '../../../providers/AuthProvider';
-
+import  axios  from 'axios';
 const UserManage = () => {
     const [cardData, setCardData] = useState([]);
     const [showBanned, setShowBanned] = useState(false)
     const [showCardData, setShowCards] = useState([])
     
     
+    //super@supe.r
+    //super
+
     
+
+
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch('http://localhost:8080/admin/users', {
-              method: "GET",
-              headers: {
-               
-                "Host": "localhost:8080",
-                'Authorization': 'Bearer ' +localStorage.getItem('site'),
-                "Content-Length": localStorage.getItem('site').length
-            }
-            });
-            const jsonData = await response.json();
-            setCardData(jsonData);
-            setShowCards(jsonData.filter((card)=>card.isBanned===false));
+            const response = await axios.get('http://localhost:8080/admin/users?limit=50&offset=0', {
+          headers: {
+            "Content-Type": "application/json",
+            "Host": "localhost:8080",
+            'Authorization': 'Bearer ' + localStorage.getItem('site'),
+            "Content-Length": localStorage.getItem('site').length
+          }
+      }).then(res =>  {
+        
+        setCardData(res.data);
+        setShowCards(res.data.filter((card)=>card.isBanned===false));
 
+        return;
+      });
           } catch (error) {
             console.error('Error fetching data:', error);
           }
@@ -51,6 +57,10 @@ const UserManage = () => {
 
     }, [showBanned])
   
+    const filterByEmail = (e) => {
+      setShowCards(cardData.filter((card)=>(((showBanned)||(card.isBanned===false))&&card.email.includes(e))));
+        
+    }
 
   return (
     <Container>
@@ -63,8 +73,8 @@ const UserManage = () => {
     <br/>
     <br/>
     
-    <p>Поиск</p>
-    <input class="form-control" ></input>
+    <p>Поиск по почте</p>
+    <input class="form-control" onChange={(e) => filterByEmail(e.target.value)} ></input>
     </Col>
     </Row>
 
